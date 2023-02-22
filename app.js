@@ -14,6 +14,7 @@ const main = async () => {
   const tasks = new Tasks();
 
   do {
+    // Show menu
     option = await inquirerMenu();
 
     switch (option) {
