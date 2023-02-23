@@ -1,5 +1,5 @@
 require("colors");
-const { saveDB } = require("./helpers/saveFile");
+const { saveDB, readDB } = require("./helpers/saveFile");
 const {
   inquirerMenu,
   inquirerPause,
@@ -13,6 +13,10 @@ const main = async () => {
 
   let option = "";
   const tasks = new Tasks();
+
+  const readTasks = readDB();
+  if (saveDB) {
+  }
 
   do {
     // Show menu
