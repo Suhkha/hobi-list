@@ -5,35 +5,35 @@ const questions = [
   {
     type: "list",
     name: "option",
-    message: "What do you wanna do?",
+    message: "What do you wanna do?".magenta,
     choices: [
       {
         value: "1",
-        name: "1. Create task",
+        name: `${"1".magenta} Create task`,
       },
       {
         value: "2",
-        name: "2. Show tasks",
+        name: `${"2".magenta} Show tasks`,
       },
       {
         value: "3",
-        name: "3. Show completed tasks",
+        name: `${"3".magenta} Show completed tasks`,
       },
       {
         value: "4",
-        name: "4. Show pending tasks",
+        name: `${"4".magenta}. Show pending tasks`,
       },
       {
         value: "5",
-        name: "5. Complete tasks",
+        name: `${"5".magenta}. Complete tasks`,
       },
       {
         value: "6",
-        name: "6. Delete task",
+        name: `${"6".magenta}. Delete task`,
       },
       {
         value: "0",
-        name: "0. Exit",
+        name: `${"0".magenta}. Exit`,
       },
     ],
   },
@@ -41,9 +41,9 @@ const questions = [
 
 const inquirerMenu = async () => {
   console.clear();
-  console.log("===========================".green);
-  console.log("Select an option".green);
-  console.log("===========================\n".green);
+  console.log("===========================".rainbow);
+  console.log("Select an option".bgMagenta);
+  console.log("===========================\n".rainbow);
 
   const { option } = await inquirer.prompt(questions);
   return option;

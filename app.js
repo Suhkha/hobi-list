@@ -14,6 +14,7 @@ const main = async () => {
   const tasks = new Tasks();
 
   do {
+    // Show menu
     option = await inquirerMenu();
 
     switch (option) {
@@ -23,7 +24,7 @@ const main = async () => {
         break;
 
       case "2":
-        console.log(tasks._listOfTasks);
+        console.log(tasks.listOfItemsArray);
         break;
 
       default:
