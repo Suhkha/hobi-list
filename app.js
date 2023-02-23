@@ -30,7 +30,7 @@ const main = async () => {
         break;
 
       case "2":
-        console.log(tasks.listOfItemsArray);
+        tasks.fullList();
         break;
 
       default:
