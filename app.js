@@ -24,7 +24,7 @@ const main = async () => {
         break;
 
       case "2":
-        console.log(tasks._listOfTasks);
+        console.log(tasks.listOfItemsArray);
         break;
 
       default:
