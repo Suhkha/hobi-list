@@ -16,6 +16,7 @@ const main = async () => {
 
   const readTasks = readDB();
   if (saveDB) {
+    tasks.loadTasksFromArray(readTasks);
   }
 
   do {
@@ -36,7 +37,7 @@ const main = async () => {
         break;
     }
 
-    //saveDB(tasks.listOfItemsArray);
+    saveDB(tasks.listOfItemsArray);
 
     await inquirerPause();
   } while (option !== "0");
