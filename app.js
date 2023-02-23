@@ -33,6 +33,14 @@ const main = async () => {
         tasks.fullList();
         break;
 
+      case "3":
+        tasks.showTasksByStatus(true);
+        break;
+
+      case "4":
+        tasks.showTasksByStatus(false);
+        break;
+
       default:
         break;
     }
