@@ -6,6 +6,7 @@ const {
   readInput,
   tasksToDelete,
   confirm,
+  checklistOfTasks,
 } = require("./helpers/inquirer");
 
 const Tasks = require("./models/tasks");
@@ -41,6 +42,11 @@ const main = async () => {
 
       case "4":
         tasks.showTasksByStatus(false);
+        break;
+
+      case "5":
+        const selectedIDs = await checklistOfTasks(tasks.listOfItemsArray);
+        tasks.toggleCompleted(selectedIDs);
         break;
 
       case "6":

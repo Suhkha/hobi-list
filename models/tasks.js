@@ -33,9 +33,9 @@ class Tasks {
     this.listOfItemsArray.forEach((task, i) => {
       const index = `${i + 1}.`.green;
       const { description, completedDate } = task;
-      const status = completedDate ? "Completed".rainbow : "Pending".red;
+      const completed = completedDate ? "Completed".rainbow : "Pending".red;
 
-      console.log(`${index} ${description} :: ${status}`);
+      console.log(`${index} ${description} :: ${completed}`);
     });
   }
 
@@ -43,20 +43,22 @@ class Tasks {
     let index = 0;
     this.listOfItemsArray.forEach((task) => {
       const { description, completedDate } = task;
-      const status = completedDate ? `${completedDate}`.green : "Pending".red;
+      const completed = completedDate
+        ? `${completedDate}`.green
+        : "Pending".red;
 
       if (completed) {
         if (completedDate) {
           index += 1;
           console.log(
-            `${(index.toString() + ".").green} ${description} :: ${status}`
+            `${(index.toString() + ".").green} ${description} :: ${completed}`
           );
         }
       } else {
         if (!completedDate) {
           index += 1;
           console.log(
-            `${(index.toString() + ".").green} ${description} :: ${status}`
+            `${(index.toString() + ".").green} ${description} :: ${completed}`
           );
         }
       }
@@ -69,5 +71,21 @@ class Tasks {
       delete this._listOfTasks[id];
     }
   }
+
+  toggleCompleted(ids = []) {
+    ids.forEach((id) => {
+      const task = this._listOfTasks[id];
+      if (!task.completedDate) {
+        task.completedDate = new Date().toISOString();
+      }
+    });
+
+    this.listOfItemsArray.forEach((task) => {
+      if (!ids.includes(task.id)) {
+        this._listOfTasks[task.id].completedDate = null;
+      }
+    });
+  }
 }
+
 module.exports = Tasks;
