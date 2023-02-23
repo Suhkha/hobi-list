@@ -4,6 +4,8 @@ const {
   inquirerMenu,
   inquirerPause,
   readInput,
+  tasksToDelete,
+  confirm,
 } = require("./helpers/inquirer");
 
 const Tasks = require("./models/tasks");
@@ -41,7 +43,17 @@ const main = async () => {
         tasks.showTasksByStatus(false);
         break;
 
-      default:
+      case "6":
+        const id = await tasksToDelete(tasks.listOfItemsArray);
+
+        if (id !== 0) {
+          const isOkay = await confirm("are you sure?");
+
+          if (isOkay) {
+            tasks.deleteTask(id);
+            console.log("Task deleted");
+          }
+        }
         break;
     }
 
