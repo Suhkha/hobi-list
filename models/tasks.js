@@ -30,15 +30,38 @@ class Tasks {
   }
 
   fullList() {
-    //console.log(this.listOfItemsArray);
-    //const tasks = this.listOfItemsArray;
     this.listOfItemsArray.forEach((task, i) => {
       const index = `${i + 1}.`.green;
       const { description, completedDate } = task;
-      const status = completedDate ? "Complete".rainbow : "Pending".red;
+      const status = completedDate ? "Completed".rainbow : "Pending".red;
 
       console.log(`${index} ${description} :: ${status}`);
     });
+  }
+
+  showTasksByStatus(completed = true) {
+    let index = 0;
+    this.listOfItemsArray.forEach((task) => {
+      const { description, completedDate } = task;
+      const status = completedDate ? `${completedDate}`.green : "Pending".red;
+
+      if (completed) {
+        if (completedDate) {
+          index += 1;
+          console.log(
+            `${(index.toString() + ".").green} ${description} :: ${status}`
+          );
+        }
+      } else {
+        if (!completedDate) {
+          index += 1;
+          console.log(
+            `${(index.toString() + ".").green} ${description} :: ${status}`
+          );
+        }
+      }
+    });
+    console.log();
   }
 }
 module.exports = Tasks;
