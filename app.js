@@ -1,5 +1,5 @@
 require("colors");
-const { saveDB } = require("./helpers/saveFile");
+const { saveDB, readDB } = require("./helpers/saveFile");
 const {
   inquirerMenu,
   inquirerPause,
@@ -14,6 +14,11 @@ const main = async () => {
   let option = "";
   const tasks = new Tasks();
 
+  const readTasks = readDB();
+  if (saveDB) {
+    tasks.loadTasksFromArray(readTasks);
+  }
+
   do {
     // Show menu
     option = await inquirerMenu();
@@ -25,14 +30,14 @@ const main = async () => {
         break;
 
       case "2":
-        console.log(tasks.listOfItemsArray);
+        tasks.fullList();
         break;
 
       default:
         break;
     }
 
-    //saveDB(tasks.listOfItemsArray);
+    saveDB(tasks.listOfItemsArray);
 
     await inquirerPause();
   } while (option !== "0");
