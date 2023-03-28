@@ -43,7 +43,7 @@ class Tasks {
     let index = 0;
     this.listOfItemsArray.forEach((task) => {
       const { description, completedDate } = task;
-      const completed = completedDate
+      const completedStatus = completedDate
         ? `${completedDate}`.bgGreen
         : "Pending".bgRed;
 
@@ -51,14 +51,18 @@ class Tasks {
         if (completedDate) {
           index += 1;
           console.log(
-            `${(index.toString() + ".").green} ${description} :: ${completed}`
+            `${
+              (index.toString() + ".").green
+            } ${description} :: ${completedStatus}`
           );
         }
       } else {
         if (!completedDate) {
           index += 1;
           console.log(
-            `${(index.toString() + ".").green} ${description} :: ${completed}`
+            `${
+              (index.toString() + ".").green
+            } ${description} :: ${completedStatus}`
           );
         }
       }
